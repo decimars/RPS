@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+
+    <script>
+
+      
+        let playerChoice = "ROCK";
+        let playerSelection = playerChoice.toLowerCase();
+        let count = 0;
+        let rounds = 5;
+    
+    
+    
+    
+    //Computer chooses here
+    
+    function getComputerChoice() {
+             val = Math.floor(Math.random()*3) + 1; 
+            if (val == 1) {
+                computerSelector = "rock";
+                return computerSelector;
+            }
+            else if (val == 2) {
+                computerSelector = "scissor";
+                return computerSelector;
+            }
+    
+            else if (val == 3) {
+                computerSelector = "paper";
+                return computerSelector;
+            }
+    
+    
+       
+    }
+    // Counter for each round
+    
+    function score(roundOutcome) {
+        switch (roundOutcome) {
+            case 1:
+                count++;
+                break;
+            case 2: 
+                count--;
+                break;    
+        }
+        if (count > 1) {
+            return "You win by " + count + " rounds.";
+        }
+        else if (count == 1) {
+            return "You win by " + count + " round.";
+        }
+    
+        else if ( count < -1) {
+            return "You lose by " + count + " rounds.";
+        }
+        else if ( count == -1) {
+            return "You lose by " + count + " round.";
+        }
+    
+        else if (count === 0) {
+            return "You tie";
+        }
+    
+    } 
+    
+    
+    //A round happens here
+    
+    
+    function playRound(playerSelection) {
+        let computerSelection = getComputerChoice();
+        if ((playerSelection == "rock") && (computerSelection == "scissor")) {
+            score(1);
+            return "You win! Rock beats Scissor";
+            
+        }
+        else if ((playerSelection == "rock") && (computerSelection == "paper")) {
+            score(2);
+            return "You lose, Paper beats Rock";
+        }
+        else if ((playerSelection == "rock") && (computerSelection == "rock")) {
+            return "You tie"
+        }
+        else if ((playerSelection == "paper") && (computerSelection == "scissor")) {
+            score(2);
+            return "You lose, Scissor beats Paper";
+        }
+        else if ((playerSelection == "paper") && (computerSelection == "paper")) {
+            return "You tie";
+        }
+        else if ((playerSelection == "paper") && (computerSelection == "rock")) {
+            score(1);
+            return "You win, Paper beats Rock";
+        }
+        else if ((playerSelection == "scissor") && (computerSelection == "scissor")) {
+            return "You tie";
+        }
+        else if ((playerSelection == "scissor") && (computerSelection == "paper")) {
+            score(1);
+            return "You win, Scissory beats Paper";
+        }
+        else if ((playerSelection == "scissor") && (computerSelection == "rock")) {
+            score(2);
+            return "You lose, Rock beats Scissor";
+        }
+    }
+    
+    //This play i amount of rounds
+    
+    
+    function game() {
+    for (i = 0; i < 5; i++) {
+        console.log(playRound(playerSelection));
+    }
+        console.log(score());
+    }
+    
+    
+        </script>
+    
+</body>
+</html>
